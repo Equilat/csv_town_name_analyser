@@ -2,13 +2,15 @@ public class Commune {
 
     String nom;
     String codePostal;
-    String coordonnees;
+    String latitude;
+    String longitude;
     int variableLinguistique;
 
-    public Commune(String nom, String codePostal, String coordonnees, int variableLinguistique) {
+    public Commune(String nom, String codePostal, String latitude, String longitude, int variableLinguistique) {
         this.nom = nom;
         this.codePostal = codePostal;
-        this.coordonnees = coordonnees;
+        this.latitude =  latitude;
+        this.longitude = longitude;
         this.variableLinguistique = variableLinguistique;
     }
 
@@ -28,12 +30,20 @@ public class Commune {
         this.codePostal = codePostal;
     }
 
-    public String getCoordonnees() {
-        return coordonnees;
+    public String getLatitude() {
+        return latitude;
     }
 
-    public void setCoordonnees(String coordonnees) {
-        this.coordonnees = coordonnees;
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 
     public int getVariableLinguistique() {

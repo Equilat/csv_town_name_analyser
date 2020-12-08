@@ -14,8 +14,8 @@ public class CsvAnalyzer {
     String separateur = ",";
     ArrayList<Commune> communes = new ArrayList<>();
     String[] adjectifs = {"ville", "villers", "villiers", "franche", "blanc", "bonne", "fleury"};
-    String[] suffixesOc = {"ac"};
-    String[] suffixesOil = {};
+    String[] suffixesOc = {"a", "ac", "aco", "acq", "ade", "aga", "alde", "an", "ans", "arache", "argues", "arrosse", "art", "at", "auch", "bers", "chio", "cio", "eu", "eux", "ex", "idos", "iros", "lne", "mont", "ols", "orte", "ouls", "stia", "toi", "udy", "zabal"};
+    String[] suffixesOil = {"ach", "ac'h", "ain", "aix", "alle", "ange", "anges", "arc", "arcambye", "arches", "arcq", "arcques", "ard", "arques", "astel", "ay", "beuf", "born", "bronn", "bures", "beures", "bourg", "buire", "brouck", "chen", "cos", "cot", "cots", "cronan", "ctudy", "dan", "dorf", "dorff", "é", "étal", "ecque", "ecques", "ennec", "erche", "erck", "erg", "ergues", "erne", "erque",  "esnes", "esdin", "estal", "euil", "ets", "ez", "feld", "fères", "fles", "fleu", "fleur", "gatte", "glate", "gnec", "gnen", "ham", "hames", "hausen", "heim", "hem", "horbes", "horps", "hourbe", "house", "ie", "ic", "iers", "ig", "inec", "ing", "inghem", "isach", "ist", "lers", "maria", "mer", "névez", "odeng", "oine", "orpes", "oudan", "rhodes", "roeux", "rouhe", "ruitz", "sent", "siau", "ster", "stroff", "urstel", "urtal", "whir", "xent", "y", "ye"};
 
     public CsvAnalyzer() {
         String currentDirectory = System.getProperty("user.dir");

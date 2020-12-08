@@ -13,9 +13,8 @@ public class CsvAnalyzer {
     String ligne = "";
     String separateur = ",";
     ArrayList<Commune> communes = new ArrayList<>();
-    //String[] adjectifs = {"ville", "villers", "villiers", "franche", "blanc", "bonne", "fleury"};
-    String[] suffixesOc = {"a", "ac", "aco", "ade", "aga", "alde", "an", "annes", "arache", "arde", "argues", "arrosse", "at", "auch", "bers", "bonne", "chio", "cio", "eix", "enx", "et", "ex", "ey", "idos", "iros", "lne", "ols", "orte", "ouls", "ouse", "stia", "toi", "ron", "udy", "vel", "zabal"};
-    String[] suffixesOil = {"ach", "ac'h", "ain", "aix", "alle", "ange", "anges", "arc", "arcambye", "arches", "arcq", "arcques", "ard", "arques", "ay", "beuf", "born", "bronn", "bures", "beures", "bourg", "buire", "brouck", "chen", "cos", "cot", "cots", "cronan", "ctudy", "dan", "dorf", "dorff", "é", "étal", "ecque", "ecques", "ennec", "erche", "erck", "erg", "erne",  "esnes", "esdin", "estal", "euil", "ets", "ez", "feld", "fères", "fles", "fleu", "fleur", "gatte", "glate", "gnec", "gnen", "ham", "hames", "hausen", "heim", "hem", "horbes", "horps", "hourbe", "house", "ic", "iers", "ig", "inec", "ing", "inghem", "isach", "ist", "lers", "maria", "mer", "névez", "odeng", "oine", "orpes", "oudan", "rhodes", "roeux", "rouhe", "ruitz", "sent", "siau", "ster", "stroff", "urstel", "urtal", "whir", "xent", "y", "ye"};
+    String[] suffixesOc = {"ac", "acq", "at"};
+    String[] suffixesOil = {"ay", "é", "ey", "y", "ecies", "eries", "iers", "ez"};
     double nombreCommunes = 0;
     double compteurOC = 0;
     double compteurOil = 0;
@@ -23,6 +22,9 @@ public class CsvAnalyzer {
     double pourcentageOc = 0;
     double pourcentageOil = 0;
 
+    /**
+     * Constructeur
+     */
     public CsvAnalyzer() {
         String currentDirectory = System.getProperty("user.dir");
         System.out.println(currentDirectory);
@@ -61,23 +63,16 @@ public class CsvAnalyzer {
 
     }
 
+    /**
+     * Analyse le nom de la commune sur la base des deux listes de suffixes (oc et oïl) et retourne sa variable linguistique
+     * @param nomCommune nom de la commune
+     * @return la variable linguistique (-1 si oïl, 0 si inconnu, 1 si oc)
+     */
     public int analyserNom(String nomCommune) {
         int i = 0;
         int ret = 0; //-1 Oïl, 0 Unknown, 1 Oc
         boolean found = false;
-        /**while (i < adjectifs.length && !found) {
-            if (nomCommune.toLowerCase().endsWith(adjectifs[i])) {
-                ret = 1;
-                compteurOC++;
-                found = true;
-            } else if (nomCommune.toLowerCase().startsWith(adjectifs[i])) {
-                ret = -1;
-                compteurOil ++;
-                found = true;
-            }
-            i++;
-        }*/
-        i = 0;
+
         while (i < suffixesOc.length && !found) {
             if (nomCommune.toLowerCase().endsWith(suffixesOc[i])) {
                 ret = 1;
@@ -99,6 +94,9 @@ public class CsvAnalyzer {
         return ret;
     }
 
+    /**
+     * Génère le fichier CSV et retourne des données statistiques sur le pourcentage de communes par racine de nom (% oc, % oïl, % inconnu)
+     */
     public void generateCsv() {
         File csvFile = new File(fichierCsvSortie);
         try (PrintWriter csvWriter = new PrintWriter(new FileWriter(csvFile));){

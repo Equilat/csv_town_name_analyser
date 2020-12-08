@@ -6,6 +6,14 @@ public class Commune {
     String longitude;
     int variableLinguistique;
 
+    /**
+     * Constructeur
+     * @param nom nom de la commmune
+     * @param codePostal code postal
+     * @param latitude latitude
+     * @param longitude longitude
+     * @param variableLinguistique variable linguistique
+     */
     public Commune(String nom, String codePostal, String latitude, String longitude, int variableLinguistique) {
         this.nom = nom;
         this.codePostal = codePostal;
